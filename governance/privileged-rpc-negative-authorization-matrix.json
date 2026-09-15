@@ -3,24 +3,24 @@
   "captured_at": "2026-09-15",
   "purpose": "Source-bound accounting for negative authorization evidence across the 16 authenticated SECURITY DEFINER RPCs reported by the live Supabase security advisor. VERIFIED means the cited live evidence exercised the dimension; NOT_VERIFIED preserves a real test gap; NOT_APPLICABLE means the function has no meaningful instance of that dimension.",
   "source": {
-    "repository_main_at_reconciliation": "c7ec37930898d90443528e8e830206ee469dda6b",
+    "repository_main_at_reconciliation": "3852ede2511db151ba9259a067ec4cdfdc7bcaa1",
     "live_project_ref": "hibesaapldkvgkydvbds",
     "advisor_finding_class": "authenticated_security_definer_function_executable",
     "advisor_finding_count": 16,
-    "evidence_boundary": "This matrix accounts for existing live database/RLS evidence only. It does not establish Browser Gate B, configured production persistence, production readiness, broad security assurance, or autonomous-agent safety."
+    "evidence_boundary": "The completed matrix includes live database-level negative tests under role authenticated with transaction-local request.jwt.claim.sub values and rollback-only synthetic fixtures. It does not establish Browser Gate B, HTTP/API-gateway behavior, configured production persistence, production readiness, broad security assurance, or autonomous-agent safety."
   },
   "functions": [
     {
       "function": "block_user",
-      "coverage_status": "PARTIAL",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
         "wrong_actor": "NOT_APPLICABLE",
-        "wrong_object_or_scope": "NOT_VERIFIED",
+        "wrong_object_or_scope": "VERIFIED",
         "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
-        "invalid_input": "NOT_VERIFIED"
+        "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
       "function": "create_space_with_owner",
@@ -36,171 +36,171 @@
     },
     {
       "function": "decide_connection_request",
-      "coverage_status": "PARTIAL",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_VERIFIED",
-        "wrong_object_or_scope": "NOT_VERIFIED",
+        "wrong_actor": "VERIFIED",
+        "wrong_object_or_scope": "VERIFIED",
         "invalid_or_stale_lifecycle": "VERIFIED",
-        "invalid_input": "NOT_VERIFIED"
+        "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
       "function": "decide_governed_agent_action",
-      "coverage_status": "PARTIAL",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
         "wrong_actor": "VERIFIED",
         "wrong_object_or_scope": "VERIFIED",
         "invalid_or_stale_lifecycle": "VERIFIED",
-        "invalid_input": "NOT_VERIFIED"
+        "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
       "function": "decide_space_invitation",
-      "coverage_status": "PARTIAL",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
         "wrong_actor": "VERIFIED",
         "wrong_object_or_scope": "NOT_APPLICABLE",
         "invalid_or_stale_lifecycle": "VERIFIED",
-        "invalid_input": "NOT_VERIFIED"
+        "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
       "function": "disconnect_connection",
-      "coverage_status": "PARTIAL",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_VERIFIED",
+        "wrong_actor": "VERIFIED",
         "wrong_object_or_scope": "NOT_APPLICABLE",
         "invalid_or_stale_lifecycle": "VERIFIED",
         "invalid_input": "NOT_APPLICABLE"
       },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
       "function": "invite_to_space",
-      "coverage_status": "PARTIAL",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
         "wrong_actor": "VERIFIED",
         "wrong_object_or_scope": "VERIFIED",
-        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
-        "invalid_input": "NOT_VERIFIED"
-      },
-      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md"]
-    },
-    {
-      "function": "is_blocked_with_current_user",
-      "coverage_status": "PARTIAL",
-      "dimensions": {
-        "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_APPLICABLE",
-        "wrong_object_or_scope": "NOT_APPLICABLE",
-        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
-        "invalid_input": "NOT_VERIFIED"
-      },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
-    },
-    {
-      "function": "join_open_space",
-      "coverage_status": "PARTIAL",
-      "dimensions": {
-        "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_APPLICABLE",
-        "wrong_object_or_scope": "VERIFIED",
-        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
-        "invalid_input": "NOT_VERIFIED"
-      },
-      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md"]
-    },
-    {
-      "function": "record_approved_action_provenance",
-      "coverage_status": "PARTIAL",
-      "dimensions": {
-        "unauthenticated": "VERIFIED",
-        "wrong_actor": "VERIFIED",
-        "wrong_object_or_scope": "NOT_VERIFIED",
-        "invalid_or_stale_lifecycle": "NOT_VERIFIED",
-        "invalid_input": "NOT_VERIFIED"
-      },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
-    },
-    {
-      "function": "request_connection",
-      "coverage_status": "PARTIAL",
-      "dimensions": {
-        "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_APPLICABLE",
-        "wrong_object_or_scope": "NOT_VERIFIED",
-        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
-        "invalid_input": "NOT_VERIFIED"
-      },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
-    },
-    {
-      "function": "request_correction_or_appeal",
-      "coverage_status": "PARTIAL",
-      "dimensions": {
-        "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_VERIFIED",
-        "wrong_object_or_scope": "NOT_VERIFIED",
-        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
-        "invalid_input": "NOT_VERIFIED"
-      },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
-    },
-    {
-      "function": "request_governed_agent_action",
-      "coverage_status": "PARTIAL",
-      "dimensions": {
-        "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_APPLICABLE",
-        "wrong_object_or_scope": "NOT_VERIFIED",
         "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
         "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
-      "function": "resolve_correction_or_appeal",
-      "coverage_status": "PARTIAL",
+      "function": "is_blocked_with_current_user",
+      "coverage_status": "VERIFIED",
+      "dimensions": {
+        "unauthenticated": "VERIFIED",
+        "wrong_actor": "NOT_APPLICABLE",
+        "wrong_object_or_scope": "NOT_APPLICABLE",
+        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
+        "invalid_input": "VERIFIED"
+      },
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
+    },
+    {
+      "function": "join_open_space",
+      "coverage_status": "VERIFIED",
+      "dimensions": {
+        "unauthenticated": "VERIFIED",
+        "wrong_actor": "NOT_APPLICABLE",
+        "wrong_object_or_scope": "VERIFIED",
+        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
+        "invalid_input": "VERIFIED"
+      },
+      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
+    },
+    {
+      "function": "record_approved_action_provenance",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
         "wrong_actor": "VERIFIED",
-        "wrong_object_or_scope": "NOT_VERIFIED",
+        "wrong_object_or_scope": "VERIFIED",
         "invalid_or_stale_lifecycle": "VERIFIED",
-        "invalid_input": "NOT_VERIFIED"
+        "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
-      "function": "revoke_space_invitation",
-      "coverage_status": "PARTIAL",
+      "function": "request_connection",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
-        "wrong_actor": "NOT_VERIFIED",
-        "wrong_object_or_scope": "NOT_APPLICABLE",
-        "invalid_or_stale_lifecycle": "NOT_VERIFIED",
-        "invalid_input": "NOT_APPLICABLE"
+        "wrong_actor": "NOT_APPLICABLE",
+        "wrong_object_or_scope": "VERIFIED",
+        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
+        "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     },
     {
-      "function": "set_space_join_policy",
-      "coverage_status": "PARTIAL",
+      "function": "request_correction_or_appeal",
+      "coverage_status": "VERIFIED",
       "dimensions": {
         "unauthenticated": "VERIFIED",
         "wrong_actor": "VERIFIED",
         "wrong_object_or_scope": "VERIFIED",
         "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
-        "invalid_input": "NOT_VERIFIED"
+        "invalid_input": "VERIFIED"
       },
-      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md"]
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
+    },
+    {
+      "function": "request_governed_agent_action",
+      "coverage_status": "VERIFIED",
+      "dimensions": {
+        "unauthenticated": "VERIFIED",
+        "wrong_actor": "NOT_APPLICABLE",
+        "wrong_object_or_scope": "VERIFIED",
+        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
+        "invalid_input": "VERIFIED"
+      },
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
+    },
+    {
+      "function": "resolve_correction_or_appeal",
+      "coverage_status": "VERIFIED",
+      "dimensions": {
+        "unauthenticated": "VERIFIED",
+        "wrong_actor": "VERIFIED",
+        "wrong_object_or_scope": "VERIFIED",
+        "invalid_or_stale_lifecycle": "VERIFIED",
+        "invalid_input": "VERIFIED"
+      },
+      "evidence_refs": ["docs/evidence/supabase-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
+    },
+    {
+      "function": "revoke_space_invitation",
+      "coverage_status": "VERIFIED",
+      "dimensions": {
+        "unauthenticated": "VERIFIED",
+        "wrong_actor": "VERIFIED",
+        "wrong_object_or_scope": "NOT_APPLICABLE",
+        "invalid_or_stale_lifecycle": "VERIFIED",
+        "invalid_input": "NOT_APPLICABLE"
+      },
+      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
+    },
+    {
+      "function": "set_space_join_policy",
+      "coverage_status": "VERIFIED",
+      "dimensions": {
+        "unauthenticated": "VERIFIED",
+        "wrong_actor": "VERIFIED",
+        "wrong_object_or_scope": "VERIFIED",
+        "invalid_or_stale_lifecycle": "NOT_APPLICABLE",
+        "invalid_input": "VERIFIED"
+      },
+      "evidence_refs": ["docs/evidence/supabase-space-invitations-live-verification-2026-09-11.md", "docs/evidence/privileged-rpc-negative-authorization-live-verification-2026-09-15.md"]
     }
   ]
 }
